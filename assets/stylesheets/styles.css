@@ -1,0 +1,31 @@
+@import url('https://rsms.me/inter/inter.css');
+
+:root {
+}
+
+html { 
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+  background-color: black;
+
+  color: white;
+
+}
+
+.main {
+  margin: auto;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.doodle {
+}
+
+.email {
+  font-size: 34pt;
+}
