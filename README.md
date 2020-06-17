@@ -1,4 +1,4 @@
-Source for brendantang.net. Mirrored at brendantang.github.io.
+Source for brendantang.net
 
 Deploy:
 
