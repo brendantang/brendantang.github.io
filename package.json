@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "name": "brendantang.net",
+  "version": "1.0.0",
+  "description": "personal site for brendan tang",
+  "main": "index.js",
+  "scripts": {
+    "publish": "rsync -rvh --delete site/ brendan@brendantang.net:/var/www/brendantang.net/html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendantang/brendantang.net.git"
+  },
+  "author": "brendan tang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brendantang/brendantang.net/issues"
+  },
+  "homepage": "https://github.com/brendantang/brendantang.net#readme"
+}
