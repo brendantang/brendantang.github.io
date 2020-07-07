@@ -14,18 +14,18 @@ html {
 
 body {
   background-color: blue;
+  background-image: url("../images/playin_cards.svg");
+  background-size: 120%;
+  background-position: bottom;
+  background-repeat: no-repeat;
   color: white; 
   font-size: 16px;
 }
 
 
 .main {
-  background-image: url("../images/playin_cards.svg");
   width: 100vw;
   height: 100vh;
-  background-size: 120%;
-  background-position: bottom;
-  background-repeat: no-repeat;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -60,14 +60,14 @@ body {
 @media only screen and (min-width: 700px) {
   body {
     font-size: 20px;
-  }
-  .main {
     background-size: 800px;
     background-position: left;
+  }
+  .main {
+    transform: translateX(4em);
   }
 
   .email-button {
     right: 4em;
-    transform: translateX(4em);
   }
 }
