@@ -11,33 +11,63 @@ html {
   font-family: /*"Inter",*/ -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+
 body {
-  background-color: black;
-
-  color: white;
-
+  background-color: blue;
+  color: white; 
+  font-size: 16px;
 }
+
 
 .main {
+  background-image: url("../images/playin_cards.svg");
+  width: 100vw;
+  height: 100vh;
+  background-size: 120%;
+  background-position: bottom;
+  background-repeat: no-repeat;
   margin: auto;
   display: flex;
-  flex-flow: row wrap;
   justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
-.doodle {
-}
-
-.email {
-  position: fixed;
-  bottom: 20px;
-
-  font-size: 34pt;
+.email-button {
+  background-color: blue;
+  color: white;
+  
+  font-size: 2em;
   font-family: 'ArialRounded';
-  text-shadow:
-   -5px -5px 0 #000,  
-    5px -5px 0 #000,
-    -5px 5px 0 #000,
-     5px 5px 0 #000;
+  text-decoration: none;
+
+  display: block;
+  height: 1.3em; 
+  padding: 0.3em;
+  margin-top: 1em;
+
+  border: 1px solid white;
+  border-radius: 2px;
+  box-shadow: 5px 5px #fff;
+  /* offset to center */
+  left: 5px;
+}
+.email-button:active {
+  box-shadow: none;
+  transform: translateY(5px) translateX(5px);
+}
+
+/* desktop adjustments */
+@media only screen and (min-width: 700px) {
+  body {
+    font-size: 20px;
+  }
+  .main {
+    background-size: 800px;
+    background-position: left;
+  }
+
+  .email-button {
+    right: 4em;
+    transform: translateX(4em);
+  }
 }

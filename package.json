@@ -3,10 +3,11 @@
   "name": "brendantang.net",
   "version": "1.0.0",
   "description": "personal site for brendan tang",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "publish": "rsync -rvh --delete site/ brendan@brendantang.net:/var/www/brendantang.net/html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "open -a 'Google Chrome' site/index.html"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/brendantang/brendantang.net/issues"
   },
-  "homepage": "https://github.com/brendantang/brendantang.net#readme"
+  "homepage": "https://github.com/brendantang/brendantang.net#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
