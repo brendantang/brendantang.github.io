@@ -3,11 +3,11 @@
   "name": "brendantang.net",
   "version": "1.0.0",
   "description": "personal site for brendan tang",
-  "main": "app.js",
   "scripts": {
-    "publish": "rsync -rvh --delete site/ brendan@brendantang.net:/var/www/brendantang.net/html",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "open -a 'Google Chrome' site/index.html"
+    "build": "preact build",
+    "dev": "preact watch",
+    "publish": "rsync -rvh --delete build/ brendan@brendantang.net:/var/www/brendantang.net/html",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,11 @@
     "url": "https://github.com/brendantang/brendantang.net/issues"
   },
   "homepage": "https://github.com/brendantang/brendantang.net#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "preact-cli": "^2.2.1"
+  },
   "dependencies": {
-    "express": "^4.17.1"
+    "preact": "^10.4.5",
+    "preact-router": "^3.2.1"
   }
 }

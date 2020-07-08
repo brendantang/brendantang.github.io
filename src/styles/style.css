@@ -1,7 +1,7 @@
 /* @import url('https://rsms.me/inter/inter.css'); */
 @font-face {
   font-family: 'ArialRounded';
-  src: url('../fonts/arial_rounded_bold.ttf') format('truetype');
+  src: url('../assets/fonts/arial_rounded_bold.ttf') format('truetype');
 }
 
 :root {
@@ -17,7 +17,7 @@ html {
 
 body {
   background-color: var(--color1);
-  background-image: url("../images/zoned_in.svg");
+  background-image: url("../assets/images/zoned_in.svg");
   background-size: 100%;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -25,16 +25,6 @@ body {
   font-size: 16px;
 }
 
-
-.main {
-  height: 80vh;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 2em;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
 
 .email-button {
   background-color: var(--color1);
@@ -59,12 +49,23 @@ body {
   transform: translateY(5px) translateX(5px);
 }
 
+.layout {
+  height: 80vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2em;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+
 /* desktop adjustments */
 @media only screen and (min-width: 700px) {
   body {
     font-size: 20px;
   }
-  .main {
+  .layout {
     justify-content: flex-end;
     margin-right: 2em;
     margin-top: 3em;
