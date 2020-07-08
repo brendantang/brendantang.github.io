@@ -13,6 +13,7 @@ html {
 
 
 body {
+  overflow: hidden;
   background-color: blue;
   background-image: url("../images/playin_cards.svg");
   background-size: 120%;
@@ -24,9 +25,11 @@ body {
 
 
 .main {
-  width: 100vw;
+  width: fit-content;
   height: 100vh;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -36,14 +39,13 @@ body {
   background-color: blue;
   color: white;
   
-  font-size: 2em;
+  font-size: 1.7em;
   font-family: 'ArialRounded';
   text-decoration: none;
 
   display: block;
   height: 1.3em; 
   padding: 0.3em;
-  margin-top: 1em;
 
   border: 1px solid white;
   border-radius: 2px;
@@ -64,10 +66,8 @@ body {
     background-position: left;
   }
   .main {
-    transform: translateX(4em);
-  }
-
-  .email-button {
-    right: 4em;
+    justify-content: flex-end;
+    margin-right: 2em;
+    margin-top: 3em;
   }
 }
