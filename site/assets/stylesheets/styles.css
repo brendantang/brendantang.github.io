@@ -61,12 +61,19 @@ body {
 @media only screen and (min-width: 700px) {
   body {
     font-size: 20px;
-    background-size: 800px;
-    background-position: left;
+    background-size: contain;
   }
   .main {
     justify-content: flex-end;
     margin-right: 2em;
     margin-top: 3em;
+  }
+}
+
+/* portrait mode on small screens */
+
+@media only screen and (max-height:500px) {
+  body {
+    background-position: top left;
   }
 }
