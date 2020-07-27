@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "name": "brendantang.net",
+  "version": "1.0.0",
+  "description": "personal site for brendan tang",
+  "scripts": {
+    "build": "preact build",
+    "dev": "preact watch",
+    "publish": "rsync -rvh --delete build/ brendan@brendantang.net:/var/www/brendantang.net/html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendantang/brendantang.net.git"
+  },
+  "author": "brendan tang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brendantang/brendantang.net/issues"
+  },
+  "homepage": "https://github.com/brendantang/brendantang.net#readme",
+  "devDependencies": {
+    "preact-cli": "^2.2.1"
+  },
+  "dependencies": {
+    "preact": "^10.4.5",
+    "preact-router": "^3.2.1"
+  }
+}
