@@ -5,6 +5,8 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+import noteStyle from "../styles/note.module.css"
+
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
@@ -17,13 +19,13 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
       <article>
-        <header>
-          <h1>
+        <header className={noteStyle.header}>
+          <h1 className={noteStyle.title}>
             {post.frontmatter.title}
           </h1>
-          <p>
+          <h2 className={noteStyle.date}>
             {post.frontmatter.date}
-          </p>
+          </h2>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr />

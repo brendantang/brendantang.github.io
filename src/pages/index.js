@@ -3,7 +3,8 @@ import { graphql } from "gatsby"
 
 import Block from "../components/block"
 import SEO from "../components/seo"
-import NotesIndex from "../components/notes_index.js"
+import NotesIndex from "../components/notes_index"
+import Layout from "../components/layout"
 
 import blockStyles from "../styles/block.module.css"
 
@@ -13,13 +14,15 @@ const Home = ({ data, location }) => {
   const notes = data.allMarkdownRemark.edges
 
   return (
-    <main className={blockStyles.blockWrapper}>
-      <SEO title={siteTitle} />
-      <Block name="front" />
-      <Block name="notes">
-        <NotesIndex notes={notes} />
-      </Block>
-    </main>
+    <Layout>
+      <div className={blockStyles.blockWrapper}>
+        <SEO title={siteTitle} />
+        <Block name="front" />
+        <Block name="notes">
+          <NotesIndex notes={notes} />
+        </Block>
+      </div>
+    </Layout>
   )
 }
 

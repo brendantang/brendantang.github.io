@@ -1,5 +1,5 @@
 .blockWrapper {
-  max-height: 95vh;
+  max-height: 100vh;
   overflow-y: hidden;
   display: flex;
   flex-direction: row;
@@ -19,7 +19,7 @@
 }
 
 .blockTitle {
-  font-family:var(--font-normal);
-  font-weight: ;
-
+  font-family: var(--font-normal);
+  font-weight: bold;
+  font-size: var(--xs-font);
 }

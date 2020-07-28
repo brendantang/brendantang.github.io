@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import noteStyle from "../styles/note.module.css"
+
 const NotesIndex = ({ notes }) => {
   const posts = notes 
 
@@ -11,12 +13,12 @@ const NotesIndex = ({ notes }) => {
         return (
           <article key={node.fields.slug}>
             <header>
-              <h3 >
+              <h1>
                 <Link to={node.fields.slug}>
                   {title}
                 </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
+              </h1>
+              <h2>{node.frontmatter.date}</h2>
             </header>
             <section>
               <p

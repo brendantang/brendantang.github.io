@@ -13,6 +13,11 @@
   --font-title: 'ArialRounded', futura, 'arial black', sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 
+  --xs-font: 12px;
+  --sm-font: 16px;
+  --md-font: 20px;
+  --lg-font: 24px;
+
   --spacer-0: 8px;
   --spacer-1: 16px;
   --spacer-3: 24px;
@@ -24,6 +29,7 @@ body {
   background-color: var(--bg-col);
   color: var(--fg-col);
   font-family: var(--font-normal);
+  font-size: var(--sm-font);
   line-height: 1.5;
 }
 
@@ -40,7 +46,7 @@ a {
   padding-bottom: var(--spacer-0);
 }
 
-a:hover {
+a:hover, a:active {
   background-image: url('../assets/images/wave--anim.svg');
 }
 
@@ -48,8 +54,4 @@ hr {
   background-color: var(--fg-col);
   height: 1px;
   border: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-title);
 }
