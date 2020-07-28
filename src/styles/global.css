@@ -1,0 +1,34 @@
+@import url('https://rsms.me/inter/inter.css');
+
+@font-face {
+  font-family: 'ArialRounded';
+  src: url('../assets/fonts/arial_rounded_bold.ttf') format('truetype');
+}
+
+:root {
+  --fg-col: white;
+  --bg-col: #293bff;
+
+  --font-normal: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; 
+  --font-title: 'ArialRounded', futura, 'arial black', sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !default;
+}
+
+body {
+  background-color: var(--bg-col);
+  color: var(--fg-col);
+  font-family: var(--font-normal);
+}
+
+a {
+  font-family: var(--font-title);
+  font-weight: bold;
+  color: var(--fg-col);
+  text-decoration: none;
+  text-shadow: 2px 2px 0px var(--fg-color);
+}
+
+a:hover {
+  background-color: var(--fg-col);
+  color: var(--bg-col);
+}
