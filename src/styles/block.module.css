@@ -1,5 +1,4 @@
 .blockWrapper {
-  max-height: 100vh;
   overflow-y: hidden;
   display: flex;
   flex-direction: row;
@@ -12,12 +11,13 @@
 .block {
   scroll-snap-align: start;
   min-width: 95vw;
+  min-height: 90vh;
 }
 
 .blockContent {
   overflow-y: scroll;
   overflow-x: hidden;
-  max-height: 90vh;
+  max-height: 95vh;
 }
 
 .blockTitle {
