@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Menu from "./menu"
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -7,11 +8,12 @@ const Layout = ({ location, title, children }) => {
 
   if (location.pathname === rootPath) {
     header = (
-      <h1>
-        <Link to={`/`} >
+      <div>
+        <h1>
           {title}
-        </Link>
-      </h1>
+        </h1>
+        <Menu />
+      </div>
     )
   } else {
     header = (

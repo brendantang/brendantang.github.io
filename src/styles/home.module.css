@@ -1,0 +1,15 @@
+.wrapper {
+  height: 95vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow-x: scroll;
+  scroll-snap-type: x proximity;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+}

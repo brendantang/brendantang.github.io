@@ -1,0 +1,8 @@
+.menu {
+  display: flex;
+  position: absolute;
+}
+
+.menu__item {
+}
+
