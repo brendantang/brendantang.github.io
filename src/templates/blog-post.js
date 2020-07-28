@@ -1,11 +1,13 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Block from "../components/block"
+import SEO from "../components/seo" 
+import Note from "../components/note"
+import Menu from '../components/menu'
 
-import noteStyle from "../styles/note.module.css"
+import blockStyle from "../styles/block.module.css"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -18,22 +20,15 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article>
-        <header className={noteStyle.header}>
-          <h1 className={noteStyle.title}>
-            {post.frontmatter.title}
-          </h1>
-          <h2 className={noteStyle.date}>
-            {post.frontmatter.date}
-          </h2>
-        </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
-      </article>
-
+      <div className={blockStyle.blockWrapper}>
+        <Block>
+          <Note note={post} />
+        </Block>
+        <Block>
+          <Menu />
+        </Block>
+      </div>
+    {/*
       <nav>
         <ul>
           <li>
@@ -52,6 +47,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </li>
         </ul>
       </nav>
+    */}
     </Layout>
   )
 }

@@ -6,10 +6,10 @@ const Menu = () => {
   const items = [
     {
       name: 'notes',
-      path: '/notes'
+      path: '/#notes'
     }, {
       name: 'about',
-      path: '/about'
+      path: '/#front'
     }, {
       name: 'code',
       path: '/code'
