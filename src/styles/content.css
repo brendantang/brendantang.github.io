@@ -1,0 +1,6 @@
+/* styles related to the presentation of markup content (within notes, etc) */
+
+a.heading__anchor {
+  text-decoration: none;
+  background-image: none;
+}

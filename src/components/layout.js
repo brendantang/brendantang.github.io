@@ -15,11 +15,11 @@ const Layout = ({ location, title, children }) => {
     )
   } else {
     header = (
-      <h3>
+      <h1>
         <Link to={`/`}>
           {title}
         </Link>
-      </h3>
+      </h1>
     )
   }
   return (
