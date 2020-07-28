@@ -1,15 +1,19 @@
 .wrapper {
-  height: 95vh;
+  max-height: 95vh;
+  overflow-y: hidden;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
   overflow-x: scroll;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: x mandatory;
 }
 
 .block {
-  display: flex;
-  flex-direction: column;
   scroll-snap-align: start;
+}
+
+.blockSection {
+  overflow: scroll;
+  max-height: 90vh;
 }
