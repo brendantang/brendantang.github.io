@@ -1,4 +1,4 @@
-.wrapper {
+.blockWrapper {
   max-height: 95vh;
   overflow-y: hidden;
   display: flex;
@@ -13,7 +13,13 @@
   scroll-snap-align: start;
 }
 
-.blockSection {
+.blockContent {
   overflow: scroll;
   max-height: 90vh;
+}
+
+.blockTitle {
+  font-family:var(--font-normal);
+  font-weight: ;
+
 }

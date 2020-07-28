@@ -1,11 +1,11 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
-import Doodle from "../components/doodle"
+import Block from "../components/block"
 import SEO from "../components/seo"
 import NotesIndex from "../components/notes_index.js"
 
-import style from "../styles/home.module.css"
+import blockStyles from "../styles/block.module.css"
 
 const Home = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -13,18 +13,12 @@ const Home = ({ data, location }) => {
   const notes = data.allMarkdownRemark.edges
 
   return (
-    <main className={style.wrapper}>
-      <SEO title="home" />
-      <section className={style.block}>
-        <Doodle name="front"/>
-      </section>
-      <section className={style.block}>
-        <div className={style.blockSection}>
-          <Doodle name="notes"/>
-          <NotesIndex notes={notes} />
-        </div>
-      </section>
-
+    <main className={blockStyles.blockWrapper}>
+      <SEO title={siteTitle} />
+      <Block name="front" />
+      <Block name="notes">
+        <NotesIndex notes={notes} />
+      </Block>
     </main>
   )
 }
