@@ -17,12 +17,15 @@
   --sm-font: 16px;
   --md-font: 20px;
   --lg-font: 24px;
+  --xl-font: 32px;
+  --xxl-font: 40px;
 
   --spacer-0: 8px;
   --spacer-1: 16px;
-  --spacer-3: 24px;
-  --spacer-4: 32px;
-  --spacer-5: 40px;
+  --spacer-2: 24px;
+  --spacer-3: 32px;
+  --spacer-4: 40px;
+  --spacer-5: 48px;
 }
 
 body {
