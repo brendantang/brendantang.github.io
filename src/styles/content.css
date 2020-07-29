@@ -1,6 +1,33 @@
-/* styles related to the presentation of markup content (within notes, etc) */
+/* styles related to the presentation of markup */
 
-a.heading__anchor {
-  text-decoration: none;
-  background-image: none;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: bold;
+  margin: 0;
 }
+
+h1 { font-size: var(--md-font); }
+h2 { font-size: var(--sm-font); }
+h3 { font-size: var(--sm-font); }
+h4 { font-size: var(--sm-font); }
+h5 { font-size: var(--sm-font); }
+h6 { font-size: var(--sm-font); }
+
+p {}
+
+article {}
+section {}
+blockquote{}
+div {}
+ul {}
+li {}
+table {}
+tr {}
+td {}
+th {}
+pre {}
+code {}
+
+aside {}
+
+img {}

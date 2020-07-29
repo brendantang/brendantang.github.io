@@ -55,3 +55,8 @@ hr {
   height: 1px;
   border: none;
 }
+
+a.heading__anchor {
+  text-decoration: none;
+  background-image: none;
+}
