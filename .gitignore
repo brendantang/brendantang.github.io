@@ -10,3 +10,6 @@ yarn-error.log*
 
 # archived versions I may need to copy paste from
 *old_version*
+
+# build directory
+public
