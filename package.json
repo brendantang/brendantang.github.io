@@ -1,0 +1,16 @@
+{
+  "name": "brendantang.net",
+  "version": "1.0.0",
+  "description": "personal and professional site for brendan tang",
+  "main": "index.js",
+  "repository": "https://github.com/brendantang/brendantang.net",
+  "author": "Brendan Tang <b@brendantang.net>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "pull-themes": "git submodule update --recursive --remote",
+    "dev": "hugo server --config config.yml --disableFastRender --enableGitInfo -D -F -v",
+    "build": "hugo --config config.yml --enableGitInfo --minify --verbose",
+    "deploy": "yarn build && rsync -rvh public/ brendan@leveler.xyz:/var/www/brendantang.net/html"
+  }
+}
