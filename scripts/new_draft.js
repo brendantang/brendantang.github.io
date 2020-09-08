@@ -5,7 +5,7 @@ const execAnd = (command_string, callback) => {
   exec(command_string, (error, stdout, stderr) => {
     if (error) {
       console.error(error)
-      return
+      process.exit(1)
     }
     console.error(stderr)
     callback(stdout)
@@ -51,4 +51,9 @@ const devServer = () => {
   })
 }
 
+let helpFlags = ['-h', '--help', '-help']
+if (helpFlags.some(flag => process.argv.slice(2).includes(flag))) {
+  console.log("Usage: `yarn draft Title of your post`")
+  process.exit()
+}
 newDraft()
