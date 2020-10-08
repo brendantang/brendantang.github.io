@@ -1,11 +1,7 @@
-![messy line drawing of brendan working on laptop](/zoned_in.svg)
-
 Hi! I'm Brendan.  
 
-This site is mostly just a nice place where I gather my thoughts and share them with a few friends.
-
 I think a lot about information tech, design, and political economy.
-Occasionally I may post notes or link lists on those topics here.
+Occasionally I post notes or link lists on those topics here, but mostly I just post very dry technical notes on web development.
 
 For money I work at a pickle factory and I independently practice web development and visual design.
 

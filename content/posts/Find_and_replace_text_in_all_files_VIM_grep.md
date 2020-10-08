@@ -1,7 +1,6 @@
 ---
 title: "Find and Replace text in all files that contain it using VIM and grep"
 date: 2020-10-07T11:59:16-04:00
-draft: true
 tags: ['technical notes', 'unix', 'vim', 'grep']
 ---
 
@@ -14,6 +13,8 @@ Recursively list all files in a given directory with matching text, then open th
 ```
 vim `grep -rwl '/path/to/look/in' -e 'string_to_match'`
 ```
+
+If you want to avoid binary files, also add the -I option. This is useful for me when grepping inside of a rails project's 'db' directory but not wanting to search .sqlite files.
 
 Once VIM is open use `:ls` to list all open buffers, `:b 1` to go to buffer 1, etc.[^2]
 

@@ -2,7 +2,7 @@
 title: "Recursive and Iterative Programs"
 date: 2020-09-08T11:25:26-04:00
 draft: true
-tags: [computing, technical notes, SICP]
+tags: [computing, technical notes]
 ---
 
 Technical notes on two kinds of programs, based on Gerald Jay Sussman's [lecture 1B](https://www.youtube.com/watch?v=V_7mmwpgJHU&list=PLE18841CABEA24090&index=2) from the classic course _Structure and Interpretation of Computer Programs_.[^1]
@@ -28,7 +28,7 @@ Where `decrement` and `increment` of a number are more primitive functions which
 
 In formal lisp the iterative program looks like:
 
-```lisp
+```
 DEFINE (
 
 ```

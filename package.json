@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "pull-themes": "git submodule update --recursive --remote",
-    "dev": "hugo server --config config.yml --disableFastRender --enableGitInfo -D -F -v",
+    "dev": "hugo server --bind=0.0.0.0 --baseURL=http://0.0.0.0:1313 --config config.yml --disableFastRender --enableGitInfo -D -F -v",
     "build": "hugo --config config.yml --enableGitInfo --minify --verbose",
     "deploy": "yarn build && rsync -rvh public/ brendan@leveler.xyz:/var/www/brendantang.net/html",
     "draft": "node scripts/new_draft.js"

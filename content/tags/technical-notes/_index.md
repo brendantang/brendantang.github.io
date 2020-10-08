@@ -1,0 +1,5 @@
+---
+title: technical notes
+---
+
+Dry
