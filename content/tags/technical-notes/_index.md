@@ -2,4 +2,4 @@
 title: technical notes
 ---
 
-Dry
+This tag marks very dry technical notes!! Be warned...
