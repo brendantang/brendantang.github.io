@@ -46,3 +46,5 @@ Often linear just means aggro.
 - Whether to play into a wrath as the aggro deck is the perfect example of balancing these things.
   - Of course you're prioritizing a tempo advantage. If you get behind on tempo against control as the aggro deck, you have probably lost.
   - But you can still lose by getting too far behind on card advantage. If you dump your hand you may get very far ahead on tempo early—but you don't need to be _that_ far ahead to win, and then if your opponent's Wrath undoes most of your tempo advantage and you have no card advantage with which to build it back.
+
+- Don't just ask "do I care about tempo adv or card adv", ask "How far ahead or behind am I on these two axes? How far ahead do I have to stay? How far behind can I afford to fall?"
