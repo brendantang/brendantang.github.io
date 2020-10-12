@@ -1,0 +1,17 @@
+{{ $cardName := .Get 0 | urlize }}
+{{ $requestURI := printf "https://api.scryfall.com/cards/named?fuzzy=%s" $cardName }}
+{{ $card := getJSON $requestURI }}
+
+<style>
+  img.mtg_card {
+    max-width: 12rem;
+  }
+  img.mtg_card:hover {
+    transform: scale(1.5);
+  } 
+</style>
+
+<img 
+  class="mtg_card" 
+  src="{{ $card.image_uris.normal }}"
+>
