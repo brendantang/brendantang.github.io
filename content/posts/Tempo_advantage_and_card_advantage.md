@@ -31,6 +31,12 @@ Footnote?: Then there are more ambiguous archetype names like "combo" and "tempo
 There are decks that are focused on quickly assembling a win condition (like Neobrand or Reanimator)—for our purposes they are usually playing the beatdown role.
 Though not attacking, they care about tempo: they want to assemble their win condition quickly and don't care about disrupting their opponent's win condition.
 
+### misc
+- card quality vs card advantage
+- Some examples: what kind of advantage have you gained if you kill 2 savannah lions with an electrolyze?
+
+{{< mtg "savannah lions" >}} {{< mtg "electrolyze" >}}
+
 Footnote? What about "linear" vs. "interactive"? "Fair" vs "unfair"?
 Often linear just means aggro.
 
