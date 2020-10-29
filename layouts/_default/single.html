@@ -1,7 +1,7 @@
 {{define "main"}}
 
 
-<div style="width:100%;display:flex;flex-flow:row wrap">
+<div style="width:100%;display:flex;flex-flow:row wrap;justify-content:space-around;">
   <article style="max-width:48rem;;padding:1rem;">
     <h1>{{.Title}}</h1>
     <aside>{{.Date}}</aside>
@@ -28,7 +28,7 @@
     <h3>Adjacent</h3>
     <div>
       {{with .PrevInSection}}<a href="{{.RelPermalink}}">← {{.Title}}</a>{{end}}
-      |
+      <br /> - - - <br />
       {{with .NextInSection}}<a href="{{.RelPermalink}}">{{.Title}} →</a>{{end}}
     </div>
 
