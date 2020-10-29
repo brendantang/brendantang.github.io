@@ -41,7 +41,6 @@ Pull the Docker community [Ghost image](https://hub.docker.com/_/ghost/)
 docker pull ghost:latest
 ```
 You only have to do this step once, and your Dokku server will have a local copy of the Ghost image as a base for as many deployments as you like.
-> ⚠️ I actually use my own Docker image which differs from the community image only in that it pulls in an [s3 storage adapter](https://github.com/colinmeinke/ghost-storage-adapter-s3). [See storage](#storage-adapter-optional)
 
 Make a Dokku app for your deployment:
 ```
@@ -157,15 +156,6 @@ dokku config:set some-ghost \
 ~~~
 
 One reason to prefer this over sticking with the default sqlite3 is that you can also use the plugin to very easily schedule automatic [backups](https://github.com/dokku/dokku-mysql#backups).
-
-## Storage adapter (optional)
-
-> (This isn't really related to deploying on Dokku, but it's a step I do every time I host an additional Ghost instance.)
-
-If my users are going to be uploading a bunch of binary data like photos, I don't want those to just live on my server's filesystem.
-Instead those file uploads live in an S3-compatible object storage bucket.
-
-TODO: this aint workin
 
 
 ## TLDR:
