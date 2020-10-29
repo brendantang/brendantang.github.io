@@ -1,0 +1,52 @@
+{{define "main"}}
+
+
+<div style="width:100%;display:flex;flex-flow:row wrap">
+  <article style="max-width:48rem;;padding:1rem;">
+    <h1>{{.Title}}</h1>
+    <aside>{{.Date}}</aside>
+    {{.Content}}
+  </article>
+
+  <nav style="max-width:14rem;padding:1rem">
+    {{ if .Params.tags }}
+      <h3>Tags</h3>
+      <ul>
+        {{range (.GetTerms "tags")}}
+        <li><a href="{{.RelPermalink}}">{{.LinkTitle}}</a></li>
+        {{end}}
+      </ul>
+    {{ end }}
+
+    {{ if .Params.toc }}
+      <h3>Sections</h3>
+      {{.TableOfContents}}
+    {{ end }}
+
+    <hr />
+
+    <h3>Adjacent</h3>
+    <div>
+      {{with .PrevInSection}}<a href="{{.RelPermalink}}">← {{.Title}}</a>{{end}}
+      |
+      {{with .NextInSection}}<a href="{{.RelPermalink}}">{{.Title}} →</a>{{end}}
+    </div>
+
+    {{$related := .Site.RegularPages.Related . | first 5}}
+    {{with $related}}
+    <div>
+      <h3>Related</h3>
+      <ul>
+        {{range .}}
+        <li><a href="{{.RelPermalink}}">{{.Title}}</a></li>
+        {{end}}
+      </ul>
+    </div>
+    {{end}}
+  </nav>
+
+</div>
+
+
+
+{{end}}

@@ -2,6 +2,7 @@
 title: "Deploying a Ghost Site on Dokku"
 date: 2020-10-24T13:44:46-04:00
 draft: true
+toc: true
 tags: [technical notes, dokku, containers]
 ---
 

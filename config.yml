@@ -1,7 +1,6 @@
 baseURL: "https://brendantang.net"
 languageCode: "en-us"
 title: "brendan tang"
-theme: "hugo-nani"
 
 permalinks:
   posts: /:year/:month/:title/

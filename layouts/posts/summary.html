@@ -1,0 +1,20 @@
+{{ if .Title }}
+<hr class="mw6 mv4" />
+<article class="" id="{{.Type}}-{{.File.UniqueID}}">
+  <h1 class="f2">
+    <a class="no-underline" href="{{.RelPermalink}}">{{.Title}}</a>
+  </h1>
+  <date class="f5">{{ .Date.Format "2006-01-02"}} </date>
+  {{- partial "tags.html" . -}}
+  <div class="f4 lh-copy mb4">
+    <p> {{ .Summary }} </p>
+    {{ if .Truncated }}
+    <div title="continued" class="tc f5">
+      <a class="no-underline" href="{{.Permalink}}">
+         . . . 
+      </a>
+    </div>
+    {{ end }}
+  </div>
+</article>
+{{ end }}
