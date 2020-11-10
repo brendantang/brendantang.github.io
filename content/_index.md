@@ -1,5 +1,5 @@
 Hi! I'm Brendan.  
 
-Mostly I just post very dry technical notes on web development.
+Mostly I just post very dry stuff about programming.
 
 b@brendantang.net
