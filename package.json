@@ -10,7 +10,8 @@
     "pull-themes": "git submodule update --recursive --remote",
     "dev": "hugo server --bind=0.0.0.0 --baseURL=http://0.0.0.0:1313 --config config.yml --disableFastRender --enableGitInfo -D -F -v",
     "build": "hugo --config config.yml --enableGitInfo --minify --verbose",
-    "deploy": "tar c ./public $* | dokku tar:in brendantang",
+    "push": "touch ./public/.static && tar c ./public $* | dokku tar:in brendantang",
+    "deploy": "yarn build && yarn push",
     "draft": "node scripts/new_draft.js"
   }
 }
