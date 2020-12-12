@@ -2,7 +2,7 @@
 title: "CouchDB Is a Comfortable Way to Store Unstructured Data"
 date: 2020-12-11T12:35:33-05:00
 draft: true
-tags: "technical notes"
+tags: ["technical notes", 'couchdb']
 ---
 
 I have a few projects that require persisting a small amount of loosely structured data.
@@ -77,32 +77,17 @@ On CouchDB's end, set the CORS rules to only accept requests from your applicati
 
 And since there's no client-facing portal to the database, it's fine to use a single database service for multiple projects.
 With a SQL database you might spin up a separate docker container to run the postgres backend for each application, store the database credentials in your app's environment variables, and interface your application with the database using some ORM package or database driver.
-With this more casual CouchDB solution, you can just open up Fauxton (the admin UI), click "Create database", save the database's url in your app's environment variables, and then use it to start making requests.
+With this more casual CouchDB solution, you can just open up Fauxton (the admin UI), click "Create database," save the database's url in your app's environment variables, and then use it to start making requests.
 
-(Also talk about how Fauxton is easy way to get the data out)
-
-
-## Installing CouchDB on Dokku
-
-There is an official [dokku plugin for CouchDB](https://github.com/dokku/dokku-couchdb).
-
-If you just want to deploy an app directly from an image in the docker hub to your dokku instance:
-
-- `dokku apps:create myapp`
-- SSH into server and:
-  - `docker pull some-image:latest`
-  - `docker tag some-image:latest dokku/myapp:latest`
-- `dokku tags:deploy myapp latest`
-
-http://dokku.viewdocs.io/dokku/deployment/methods/images/#deploying-from-a-docker-registry
-
-The additional step you need to take for CouchDB is to set the administrator username and password in environment variables
-
-`dokku config:set couch COUCHDB_PASSWORD=some_secure_password COUCHDB_USER=some_admin`
-
-Couch doesn't automatically serve over normal http ports, so you need to configure nginx and letsencrypt (for https)
+When it's time to retrieve that list of emails, I can just open up my terminal and make a request:
 
 ```
-dokku nginx:ports-add couch http:80:5984
-dokku letsencrypt
+curl 'https://USERNAME:PASSWORD@HOST:PORT/my-clients-newsletter-db/_all_docs?include_docs=true'
 ```
+
+If I want more programmatic ways of working with the data, Couch offers tons of ways to index, filter, and iterate over the documents via [design documents and views](https://docs.couchdb.org/en/stable/ddocs/index.html).
+
+But for most of these casual use cases, I'm totally happy to just dump all my json data into a file and write a little script to like, format it into a csv or something.
+
+That's my use case and justification for CouchDB. 
+I'll write another post later documenting how I manage my installation.
