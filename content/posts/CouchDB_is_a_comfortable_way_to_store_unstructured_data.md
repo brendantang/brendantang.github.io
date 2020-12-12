@@ -1,7 +1,7 @@
 ---
 title: "CouchDB Is a Comfortable Way to Store Unstructured Data"
 date: 2020-12-11T12:35:33-05:00
-draft: true
+draft: false
 tags: ["technical notes", 'couchdb']
 ---
 
