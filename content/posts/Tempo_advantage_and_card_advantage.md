@@ -5,6 +5,8 @@ draft: true
 tags: [mtg]
 ---
 
+A lot of loosely defined terms get thrown around in Magic strategy discussions.
+
 - Role: "Who is the beatdown?"
 - But once you've identified your role, what to do with that? Aside from "I should be attacking" "I should be blocking"
 - But it's obviously more complicated
