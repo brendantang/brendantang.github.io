@@ -2,7 +2,7 @@
 title: "Advent of Code 2020 in Haskell"
 date: 2021-01-31T16:31:47-05:00
 draft: true
-tags: [haskell]
+tags: [haskell, AOC2020]
 ---
 
 I've been playing around with Haskell for a bit now and have decided use it to solve some of the puzzles in last year's [Advent of Code](https://adventofcode.com).
