@@ -1,7 +1,7 @@
 ---
 title: "Advent of Code 2020 in Haskell"
 date: 2021-01-31T16:31:47-05:00
-draft: true
+draft: false
 tags: [haskell, AOC2020]
 ---
 
