@@ -2,6 +2,7 @@
 title: "AoC 2020 Day 4 Pt1"
 date: 2021-02-18T20:19:30-05:00
 draft: false
+tags: [haskell, AOC2020]
 ---
 
 > I've already [mentioned](https://www.brendantang.net/2021/01/advent-of-code-2020-in-haskell/) I've been solving some of the 2020 Advent of Code puzzles as a way to pick up Haskell.
