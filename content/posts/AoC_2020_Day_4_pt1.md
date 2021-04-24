@@ -39,9 +39,7 @@ I'm finding it really tricky to get out of the imperative mindset!
 
 In ruby I would probably do something like:
 
-```
-# ruby
-
+```ruby
 data = File.read("data.txt")
 
 passport_hashes = data.split("\n\n").map do |passport_string|
@@ -57,9 +55,7 @@ Split the string on empty newlines getting a string of data for each passport, l
 
 Finally, to get the count of passports with all seven required fields present, I loop through the list of hashes, incrementing a counter for each passport with the required keys:
 
-```
-# ruby
-
+```ruby
 RequiredKeys = %w[ byr iyr eyr hgt hcl ecl pid ]
 
 number_of_passports_with_required_fields =
@@ -72,9 +68,7 @@ puts number_of_passports_with_required_fields
 
 In other words, the imperative approach is to describe the steps to go from
 
-```
-#ruby
-
+```ruby
 "byr:1983 iyr:2017
 pid:796082981 cid:129 eyr:2030
 ecl:oth hgt:182cm
@@ -86,9 +80,7 @@ eyr:2039 hcl:#cfa07d hgt:171cm ecl:#0180ce byr:2006 pid:8204115568"
 
 to
 
-```
-#ruby
-
+```ruby
 [
   "byr:1983 iyr:2017
   pid:796082981 cid:129 eyr:2030
@@ -101,9 +93,7 @@ to
 
 to
 
-```
-# ruby
-
+```ruby
 [
   ["byr:1983", "iyr:2017", "pid:796082981", "cid:129", "eyr:2030", "ecl:oth", "hgt:182cm"],
   ["iyr:2019", "cid:314", "eyr:2039", "hcl:#cfa07d", "hgt:171cm", "ecl:#0180ce", "byr:2006", "pid:8204115568"]
@@ -112,9 +102,7 @@ to
 
 to
 
-```
-# ruby
-
+```ruby
 [
   {"byr"=>"1983", "iyr"=>"2017", "pid"=>"796082981", "cid"=>"129", "eyr"=>"2030", "ecl"=>"oth", "hgt"=>"182cm"},
   {"iyr"=>"2019", "cid"=>"314", "eyr"=>"2039", "hcl"=>"#cfa07d", "hgt"=>"171cm", "ecl"=>"#0180ce", "byr"=>"2006", "pid"=>"8204115568"}
@@ -132,9 +120,7 @@ In some ways my Haskell solution feels like it's approaching the solution from t
 Where in the Ruby solution I started by saying what I have (the string from `data.txt`) and described the steps to take to get what I want (the count of passports with all required fields),
 in the Haskell solution I start by declaring what I want and working backwards from there.
 
-```
--- haskell
-
+```haskell
 -- I start by saying "a passport is a list of fields, where each field is a pair of key, value."
 type Passport = [PassportField]
 type PassportField = (String, String)
@@ -159,8 +145,7 @@ Let's start with testing whether a passport has all the required fields.
 
 ### Testing a Passport for required fields
 
-```
--- haskell
+```haskell
 hasRequiredFields :: Passport -> Bool
 hasRequiredFields passport = null (requiredKeys \\ keys passport)
 ```
@@ -174,17 +159,13 @@ Now I've broken the `hasRequiredFields` test into two smaller problems: how to f
 
 The list of required keys is just a list, so we can define it without breaking it down into any smaller problems:
 
-```
--- haskell
-
+```haskell
 requiredKeys = ["byr","iyr","eyr","hgt","hcl","ecl","pid"]
 ```
 
 #### Getting a list of keys from a Passport
 
-```
--- haskell
-
+```haskell
 keys :: Passport -> [String]
 keys passport = ks 
     where (ks, _) = unzip passport
@@ -200,9 +181,7 @@ All that's left now is to get a list of passwords to filter!
 
 ### Parsing a string into a list of Passports
 
-```
--- haskell
-
+```haskell
 parsePassports :: String -> [Passport]
 parsePassports s = map parsePassport (splitOnEmptyLine s)
 ```
@@ -216,9 +195,7 @@ If we know how to solve those two subproblems, then all we have to do is `map` o
 
 ### Parsing a string into a single passport
 
-```
--- haskell
-
+```haskell
 parsePassport :: String -> Passport
 parsePassport s = map parseField (words s)
 ```
@@ -233,9 +210,7 @@ If `parseField` can turn `"hgt:182cm"` into `("hgt", "182cm")`, then we just hav
 
 #### Parsing a "key:value" string to a ("key","value") pair
 
-```
--- haskell
-
+```haskell
 parseField :: String -> PassportField
 parseField s = (key, value)
     where 
@@ -250,18 +225,14 @@ But we don't want that colon, so we assign `key` and `value` using pattern match
 The `:` in `_:value` is a list operator that constructs a list by prepending a single element to another list.
 
 So if I defined a list like this:
-```
--- haskell
-
+```haskell
 myList = (1:[2,3,4])
 ```
 Then `myList` would evaluate to `[1,2,3,4]`.
 
 Pattern matching comes into play here because I'm using the `:` operator on the left side of my assignment expression. Example:
 
-```
--- haskell
-
+```haskell
 (foo:bar) = ['h','e','l','l','o']
 ```
 `foo` then evaluates to `'h'`, and `bar` is `['e','l','l','o']`
@@ -284,9 +255,7 @@ But even that just performs the split once and returns a pair, so I would still 
 
 Just as good to stick with `String` and use the Prelude function `lines` instead:
 
-```
--- haskell
-
+```haskell
 splitOnEmptyLine :: String -> [String]
 splitOnEmptyLine string = firstElem : restOfTheElems
     where firstElem = unlines firstItemLines
@@ -301,18 +270,14 @@ Coming from an imperative mindset, I'm finding it really hard to explain what's 
 `splitOnEmptyLine` is basically saying:
 - `splitOnEmptyLine string = firstElem : restOfTheElems` means give me a string `string`, and I'll give you the first item of the list... and also the rest of the list.
 - `firstElem = unlines firstItemLines` - The first item of the list is the list of strings for the lines representing the first passport, collapsed back into a single string.
-  ```
-  -- haskell
-
+  ```haskell
   unlines ["pid:796082981 cid:129 eyr:2030","ecl:oth hgt:182cm"]
   -- evaluates to "pid:796082981 cid:129 eyr:2030\necl:oth hgt:182cm"
   ```
   
 - `(firstItemLines, remainingLines) = break null (lines string)` - Here we see that `firstItemLines` we just used is the first item in the pair you get by `break`ing `(lines string)` using `null`.
   - `lines string` splits `string` into a list of strings, one for each line, so if `string` looks like this:
-    ```
-    -- haskell
-    
+    ```haskell
     "pid:796082981 cid:129 eyr:2030
     ecl:oth hgt:182cm
 
@@ -323,9 +288,7 @@ Coming from an imperative mindset, I'm finding it really hard to explain what's 
     then `lines string` looks like: `["pid:796082981 cid:129 eyr:2030","ecl:oth hgt:182cm","","iyr:2019","","cid:12"]`
   - Notice empty newlines became empty strings, `""`.
   - `null` checks if a String (or any list) is empty, and `break null` splits a list into a pair of lists just before the first element for which `null` is true.
-    ```
-    -- haskell
-
+    ```haskell
     break null ["pid:796082981 cid:129 eyr:2030","ecl:oth hgt:182cm","","iyr:2019","","cid:12"]
     -- evaluates to (["pid:796082981 cid:129 eyr:2030","ecl:oth hgt:182cm"],["","iyr:2019","","cid:12"])
     ```
@@ -337,9 +300,7 @@ Coming from an imperative mindset, I'm finding it really hard to explain what's 
 - That means we can say `restOfTheElems = splitOnEmptyLine $ unlines $ tail remainingLines`
   - But eventually we'll parse through the whole input string, and there's nothing to keep our function from continuing to invoke itself, so it will just keep adding empty lists forever.
   - So we add a guard to handle the case where `remainingLines` is empty, meaning we've parsed all the input. That's how we end up with:
-    ```
-    -- haskell
-
+    ```haskell
     restOfTheElems
       | null remainingLines = []
       | otherwise = splitOnEmptyLine $ unlines $ tail remainingLines
@@ -370,9 +331,7 @@ Some things I'm not crazy about / still need to adapt to:
   Writing a bunch of increasingly abstract subproblems means you end up with a bunch of functions you can reuse in other situations, but you have to make sure you're making abstractions that strike the right balance of usefulness in other contexts and expressing your intent in the current context.
 
   Like I could have written `splitOnEmptyLine` in a way that would be more tightly coupled to the current use case:
-  ```
-  -- haskell
-
+  ```haskell
   getPassportStrings :: String -> [String]
   getPassportStrings string = firstPassport : restOfThePassports
       where firstPassport = unlines firstPassportLines
