@@ -1,6 +1,0 @@
-[submodule "themes/hugo-nani"]
-	path = themes/hugo-nani
-	url = git@github.com:brendantang/hugo-nani.git
-[submodule "themes/drybones"]
-	path = themes/drybones
-	url = https://github.com/brendantang/hugo-drybones
