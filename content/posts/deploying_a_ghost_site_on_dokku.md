@@ -1,7 +1,7 @@
 ---
 title: "Deploying a Ghost Site on Dokku"
 date: 2020-10-24T13:44:46-04:00
-draft: true
+draft: false
 toc: true
 tags: [technical notes, dokku, containers]
 ---
@@ -88,7 +88,7 @@ dokku storage:mount some-ghost /var/lib/dokku/data/storage/some-ghost-data:/var/
 dokku ps:restart some-ghost
 ~~~
 > ⚠️ You would think the mount point in the container would be `/var/lib/ghost`, but it's `/var/lib/ghost/content`.
-> If you get this wrong, you'll get an error message like this: 
+> If you get this wrong, you'll get an error message.
 > ([this github issue helped me](https://github.com/TryGhost/Ghost/issues/9429))
 
 
@@ -108,7 +108,7 @@ Reference for all the environment variables that Ghost cares about is [in the Gh
 ### Mailer configuration
 
 [Mail configuration](https://ghost.org/docs/concepts/config/#mail) is required to get password recovery emails or invite other users.
-I (obviously) like self-hosting everything, but when it comes to SMTP, anything other than an external service like Mailgun just seems like an enormous fucking pain.
+I (obviously) like self-hosting things, but when it comes to SMTP, anything other than an external service like Mailgun just seems like an enormous pain.
 
 ~~~
 dokku config:set some-ghost \
@@ -127,7 +127,7 @@ The Ghost docker image defaults to using a sqlite3 database, which is just a fil
 If you want to use an actual MySQL database instead, the [dokku mysql plugin](https://github.com/dokku/dokku-mysql) makes it super easy:
 
 ~~~
-# mysql plugin has to be installed! see ☝️
+# install mysql plugin 
 dokku mysql:create some-ghost-db
 dokku mysql:link some-ghost-db some-ghost
 ~~~
