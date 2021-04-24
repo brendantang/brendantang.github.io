@@ -1,14 +1,12 @@
 {{define "main"}}
-
-
-<div style="width:100%;display:flex;flex-flow:row wrap;justify-content:space-around;">
-  <article style="max-width:48rem;;padding:1rem;">
+<div id="content">
+  <article>
     <h1>{{.Title}}</h1>
     <aside>{{.Date}}</aside>
     {{.Content}}
   </article>
 
-  <nav style="max-width:14rem;padding:1rem">
+  <nav>
     {{ if .Params.tags }}
       <h3>Tags</h3>
       <ul>
@@ -44,9 +42,5 @@
     </div>
     {{end}}
   </nav>
-
 </div>
-
-
-
 {{end}}
