@@ -63,9 +63,10 @@ article {
   flex-flow: row;
   list-style: none;
 }
-.icon-tags a,
-.icon-tags li a {
+.site-navigation a,
+.site-navigation li a {
   text-decoration: none;
+  padding: 0.25rem;
 }
 
 .term-table {
