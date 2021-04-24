@@ -3,11 +3,13 @@
 <section>{{- .Content -}}</section>
 
 <h2>Posts</h2>
-<ul style="padding: 0">
+<ul class="posts-list">
   {{range .Paginator.Pages}}
-  <li style="list-style: none; padding: 1rem;" >
+  <li class="post-listing">
     <a href="{{.RelPermalink}}">{{.Title}}</a>
-    {{ .Date.Format "2006-01-02"}} 
+    <time>
+      {{ .Date.Format "2006-01-02"}} 
+    </time>
   </li>
   {{end}}
 </ul>
