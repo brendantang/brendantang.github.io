@@ -1,10 +1,8 @@
 Personal site where I keep programming notes.
 
-# Build & deploy
+# Developing
 
-See Makefile for build & deployment commands.
-
-Depends on:
-  - hugo as static site generator
-  - Dokku (with cli installed) for deployment
-
+- Uses hugo as static site generator
+- Use Dokku (with cli installed) for deployment on my server instance
+- See Makefile for build & deployment commands
+- `tmuxinator local` from this directory to open up default tmux layout
