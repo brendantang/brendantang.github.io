@@ -1,0 +1,21 @@
+{{define "main"}}
+
+<h2>{{.Title}} {{ .Params.icon}}</h2>
+<section>{{- .Content -}}</section>
+<table class="terms-table">
+  <tr>
+    <th></th>
+    <th>{{.Title | singularize}}</th>
+    <th>Count</th>
+  </tr>
+  {{range sort .Data.Terms.ByCount }}
+  <tr class="term-row">
+    <td>{{.Page.Params.icon}}</td>
+    <td><a href="{{.Page.RelPermalink}}">{{.Page.Title}}</a></td>
+    <td>{{.Count}}</td>
+  </tr>
+  {{end}}
+</table>
+
+
+{{end}}

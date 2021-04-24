@@ -6,12 +6,12 @@
     {{.Content}}
   </article>
 
-  <nav>
+  <nav class="sidebar">
     {{ if .Params.tags }}
       <h3>Tags</h3>
       <ul>
         {{range (.GetTerms "tags")}}
-        <li><a href="{{.RelPermalink}}">{{.LinkTitle}}</a></li>
+        <li> {{ .Params.icon }} <a href="{{.RelPermalink}}">{{.LinkTitle}}</a></li>
         {{end}}
       </ul>
     {{ end }}
