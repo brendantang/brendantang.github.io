@@ -1,6 +1,7 @@
 baseURL: "https://brendantang.net"
 languageCode: "en-us"
 title: "brendan tang"
+paginate: 20
 
 permalinks:
   posts: /:year/:month/:title/

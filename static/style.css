@@ -49,6 +49,7 @@ article {
 .pagination {
   display: flex;
   list-style: none;
+  justify-content: center;
 }
 .page-item {
   padding: 0.5rem;
