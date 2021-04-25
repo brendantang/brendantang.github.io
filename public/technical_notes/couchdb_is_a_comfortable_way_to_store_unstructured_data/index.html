@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset=utf-8><title>brendan tang</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/style.css></head><body><div class=wrapper><header class=site-header><a href=/>brendan tang</a><nav class=icon-tags><a title=Posts href=/technical_notes/>POSAT</a>
+8
+| <a title=tags href=/tags>🏷</a></nav></header><div id=content><article><h1>CouchDB Is a Comfortable Way to Store Unstructured Data</h1><aside>2020-12-11 12:35:33 -0500 EST</aside><p>I have a few projects that require persisting a small amount of loosely structured data.</p><p>For example, a client needs to collect email addresses from people who want to be notified when her next sale is coming up.
+She doesn&rsquo;t want to start a newsletter campaign or build out a big customer database—she just needs to save a small list of email addresses!</p><p>There are tons of ways to save a small amount of data in a pinch—I could even just throw together a Google Form.
+Netlify Forms or Vercel Serverless Functions would probably be good options too.</p><p>But this client isn&rsquo;t the only one who needs this kind of functionality—I have another client, for example, who is selling just 2 products (for pickup on a specific date) through the Stripe API.
+The site I built for them accepts a webhook from Stripe on checkout to save information about the order.</p><p>I need to save order information so that the client knows how much of each product to make, but does it really make sense to build a schema for a whole relational model with Customers, Products, and Orders?
+What if the third product my client wants to sell has a different distribution model?
+Will the constraints I put on the database still make sense?</p><h2 id=prefer-a-schemaless-database-for-casual-data>Prefer a schemaless database for &lsquo;casual&rsquo; data</h2><p>I want one consistent, easy way to handle this kind of &ldquo;casual&rdquo; database requirement.
+For now I have landed on self-hosting a single document database service which can hold persist loosely structured data for multiple frontend applications.</p><p>A &ldquo;schemaless&rdquo; document database works well for these situations where scaffolding out a rigid data model would be overkill.
+I just want to save a list of whatever email addresses people submit into a form.
+I don&rsquo;t want to deal with decisions like, &ldquo;What should I name the table that has an <code>email</code> column? Should email be a required field for that table? Should I validate the uniqueness of an email?&rdquo;</p><p>With a document database I can just create a table and start throwing json objects in there:</p><pre><code>{'email': 'foo@example.com'},
+{'email': 'bar@example.com'}
+</code></pre><p>The data has enough structure that it would be manageable to later treat each document as a <code>customer</code>, adding in fields like <code>order_ids: []</code> etc.
+Or maybe the client decides she wants to commission a GUI backend where she can view and edit data about her customers and their orders.
+It&rsquo;s easy enough to take those json documents and write a script to seed a more traditional relational database with them.</p><p>It may be true that &ldquo;schemaless database&rdquo; is a bit of a misnomer, since there&rsquo;s always an &ldquo;implied schema.&rdquo;
+If my application logic breaks down when it tries to access the <code>email</code> field on a <code>customer</code> object, then there is functionally a <code>NOT NULL</code> constraint on the email field—it&rsquo;s just not explicit.</p><p>I&rsquo;d prefer to have an explicit schema when developing a complex client-facing UI to work with the data.
+But if the client&rsquo;s main interface to the data is just like, me emailing them a spreadsheet once a month, it can be more work to design a schema than it&rsquo;s worth!</p><h2 id=couchdb>CouchDB</h2><p>I like CouchDB for this purpose because the primary way to interact with your database is already just a REST API.
+I don&rsquo;t have to worry about installing any database driver or ORM packages.
+Want to save an email address? Just make an HTTP request:</p><pre><code>const saveEmail = async (email) =&gt; {
+  const id = // Generate a uuid
+  # Example database url below. Obscure this in your actual code!
+  const dbResponse = await fetch(`https://COUCHUSER:PASSWORD@HOSTNAME:PORT/my-clients-newsletter-db/${id}`, {
+    method: &quot;PUT&quot;,
+    mode: &quot;cors&quot;,
+    cache: &quot;no-cache&quot;,
+    credentials: &quot;same-origin&quot;,
+    headers: {
+      &quot;Content-Type&quot;: &quot;application/json&quot;,
+    },
+    body: JSON.stringify({ email: email }),
+  });
+  const data = await dbResponse.json();
+  console.log(data)
+}
+</code></pre><p>No need to deal with users, authentication, etc.
+Just store that database url in an environment variable, and obviously don&rsquo;t expose it in your client-side code.
+On CouchDB&rsquo;s end, set the CORS rules to only accept requests from your application&rsquo;s domain.</p><p>And since there&rsquo;s no client-facing portal to the database, it&rsquo;s fine to use a single database service for multiple projects.
+With a SQL database you might spin up a separate docker container to run the postgres backend for each application, store the database credentials in your app&rsquo;s environment variables, and interface your application with the database using some ORM package or database driver.
+With this more casual CouchDB solution, you can just open up Fauxton (the admin UI), click &ldquo;Create database,&rdquo; save the database&rsquo;s url in your app&rsquo;s environment variables, and then use it to start making requests.</p><p>When it&rsquo;s time to retrieve that list of emails, I can just open up my terminal and make a request:</p><pre><code>curl 'https://USERNAME:PASSWORD@HOST:PORT/my-clients-newsletter-db/_all_docs?include_docs=true'
+</code></pre><p>If I want more programmatic ways of working with the data, Couch offers tons of ways to index, filter, and iterate over the documents via <a href=https://docs.couchdb.org/en/stable/ddocs/index.html>design documents and views</a>.</p><p>But for most of these casual use cases, I&rsquo;m totally happy to just dump all my json data into a file and write a little script to like, format it into a csv or something.</p><p>That&rsquo;s my use case and justification for CouchDB.
+I&rsquo;ll write another post later documenting how I manage my installation.</p></article><nav class=sidebar><h3>Tags</h3><ul><li>💻 <a href=/tags/technical-notes/>technical notes</a></li><li><a href=/tags/couchdb/>couchdb</a></li></ul><hr><h3>Adjacent</h3><div><a href=/technical_notes/stop_rails_server_after_closing_the_terminal/>← Stop Rails Server After Closing the Terminal</a><br>- - -<br><a href=/technical_notes/activerecord_has_many_association_within_the_same_model/>ActiveRecord has_many Association Within the Same Model →</a></div><div><h3>Related</h3><ul><li><a href=/technical_notes/stop_rails_server_after_closing_the_terminal/>Stop Rails Server After Closing the Terminal</a></li><li><a href=/technical_notes/deploying_a_ghost_site_on_dokku/>Deploying a Ghost Site on Dokku</a></li><li><a href=/technical_notes/resolving_sql_exception_ambiguous_column_name_in_rails/>Resolving SQLException: ambiguous column name in a Rails project</a></li><li><a href=/technical_notes/find_and_replace_text_in_all_files_vim_grep/>Find and Replace text in all files that contain it using VIM and grep</a></li></ul></div></nav></div><footer style=max-width:100%><a href=/><img style=max-width:100% src=/glasses.svg></a></footer></div></body></html>

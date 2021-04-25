@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset=utf-8><title>brendan tang</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/style.css></head><body><div class=wrapper><header class=site-header><ol class=site-navigation><li><a title="brendan tang" href=https://brendantang.net/>🐒 brendan tang</a></li>▸<li><a title=posts href=https://brendantang.net/posts/>🤔 posts</a></li>▸<li class=active><a title="Resolving SQLException: ambiguous column name in a Rails project" href=https://brendantang.net/2020/10/resolving-sqlexception-ambiguous-column-name-in-a-rails-project/>Resolving...</a></li></ol><ul class=site-navigation><li><a title=tags href=/tags>🏷</a></li><li><a title=notebook href=/notebook>📓</a></li><li><a title="my github" href=https://github.com/brendantang>💻</a></li></ul></header><div id=content><article><h1>Resolving SQLException: ambiguous column name in a Rails project</h1><aside><time>published Monday, Oct 12, 2020</time><br><time>last edit Monday, Oct 12, 2020</time></aside><p>In my current project, I have a model concern which contains shared scopes for filtering and sorting records.
+For instance, I have the models <code>recipes,</code> <code>batches,</code> and <code>pack_dates.</code>
+Both <code>recipe</code> and <code>pack_date</code> are associated with a <code>recipe</code> through a <code>belongs_to</code> association.</p><p>By including my <code>FilteringScopes</code> module, both <code>batch</code> and <code>pack_date</code> get access to a <code>with_recipe</code> scope which returns only those records which belong to the given recipe (among other filtering and sorting scopes).</p><pre><code># app/models/concerns/filtering_scopes.rb
+ 
+require 'active_support/concern'
+
+module FilteringScopes
+  extend ActiveSupport::Concern
+
+  included do
+
+    scope :with_recipe,
+          lambda { |recipe_code|
+            where(recipe: Recipe.find_by(code: recipe_code))
+          }
+</code></pre><p>Initially I had the <code>with_recipe</code> scope written like this:</p><pre><code>scope :with_recipe,
+      lambda { |recipe_code|
+        where('recipe_id = ?', Recipe.find_by(code: recipe_code).id)
+      }
+</code></pre><p>But I found that using this string format would get me into trouble in some situations where Rails didn&rsquo;t know whether to look at the <code>recipe_id</code> column of the <code>pack_dates</code> table or the <code>batches</code> table, and I would get this error:</p><pre><code>ActionView::Template::Error: SQLite3::SQLException: ambiguous column name: recipe_id
+</code></pre><p>Switching from the string form of the <code>where</code> method to the hash form resolved this for me.</p></article><nav class=sidebar><h3>Tags</h3><ul><li><a href=/tags/rails/>rails</a></li><li><a href=/tags/technical-notes/>technical notes</a></li></ul><hr><h3>Adjacent</h3><div><a href=/2020/10/find-and-replace-text-in-all-files-that-contain-it-using-vim-and-grep/>← Find and Replace text in all files that contain it using VIM and grep</a><br>- - -<br><a href=/2020/10/deploying-a-ghost-site-on-dokku/>Deploying a Ghost Site on Dokku →</a></div><div><h3>Related</h3><ul><li><a href=/2020/10/find-and-replace-text-in-all-files-that-contain-it-using-vim-and-grep/>Find and Replace text in all files that contain it using VIM and grep</a></li></ul></div></nav></div><footer style=max-width:100%><a href=/><img style=max-width:100% src=/glasses.svg></a></footer></div></body></html>

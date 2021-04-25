@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset=utf-8><title>brendan tang</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=/style.css></head><body><div class=wrapper><header class=site-header><ol class=site-navigation><li><a title="brendan tang" href=https://brendantang.net/>🐒 brendan tang</a></li>▸<li><a title=posts href=https://brendantang.net/posts/>🤔 posts</a></li>▸<li class=active><a title="Advent of Code 2020 in Haskell" href=https://brendantang.net/2021/01/advent-of-code-2020-in-haskell/>Advent of Code...</a></li></ol><ul class=site-navigation><li><a title=tags href=/tags>🏷</a></li><li><a title=notebook href=/notebook>📓</a></li><li><a title="my github" href=https://github.com/brendantang>💻</a></li></ul></header><div id=content><article><h1>Advent of Code 2020 in Haskell</h1><aside><time>published Sunday, Jan 31, 2021</time><br><time>last edit Thursday, Feb 18, 2021</time></aside><p>I&rsquo;ve been playing around with Haskell for a bit now and have decided use it to solve some of the puzzles in last year&rsquo;s <a href=https://adventofcode.com>Advent of Code</a>.</p><p>Usually I find it hard to motivate myself to try &ldquo;coding exercises&rdquo; like this.
+In general I have more momentum when I&rsquo;m just trying to build something I want to use and learning things along the way.
+But Haskell is really different from anything I&rsquo;m used to, so I have a lot of fundamentals to learn before I can build anything useful.
+The puzzles in Advent of Code have kind of the perfect difficulty level for me at this stage.
+Bouncing between these puzzles and a couple of books<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup> has been a surprisingly satisfying way to pick up the language.</p><p>I thought I would keep some notes as I go through it.
+These notes probably won&rsquo;t mean much to you unless you are one of the following:</p><ul><li>Me</li><li>Also learning Haskell, wanting to see the thought process of a fellow beginner</li></ul><p>For these notes or my code to make any sense, you&rsquo;ll probably need familiarity with concepts in, say, the first couple chapters of <a href=http://learnyouahaskell.com>LYAH</a>, and of course the AOC problem that I&rsquo;m working on.</p><h2 id=day-1---report-repair>Day 1 - Report Repair</h2><ul><li><a href=https://adventofcode.com/2020/day/1>Problem</a></li><li><a href=https://github.com/brendantang/aoc_2020_haskell/blob/main/day1/day1.hs>My solution</a></li></ul><p>I learned a lot with this first one!</p><pre><code>module Main where
+import Data.List (tails, nub, sort)
+</code></pre><ul><li>A module called <code>Main</code> compiles to an executable (a program you run) rather than a library (some definitions you import in other code).</li><li>In the second line I&rsquo;m importing the definitions <code>tails</code>, <code>nub</code>, and <code>sort</code> from the standard <code>Data.List</code> module.</li></ul><pre><code>main = do
+  ledger &lt;- getContents
+</code></pre><ul><li>The function called <code>main</code> defines what will happen when we run the compiled executable.</li><li>I still don&rsquo;t quite understand <code>do</code> notation, but I get that inside of <code>do</code>:<ul><li>you&rsquo;re allowed to do some I/O, like <code>ledger &lt;- getContents</code>, which reads from standard input and binds the result to the name <code>ledger</code>.
+(I pipe the file contents into the compiled executable like <code>cat expense_report.txt > ./day1</code>.)</li><li>The last line inside the <code>do</code> has to return an I/O action, in this case <code>print</code> which prints its argument to standard output.</li></ul></li></ul><pre><code>duosWithSum :: Int -&gt; [Int] -&gt; [(Int, Int)]
+duosWithSum n xs = [(x,y) | (x:ys) &lt;- tails (nub xs)
+                            , y &lt;- ys
+                            , y + x == n]
+</code></pre><p>This function gave me my first taste of solving problems the &ldquo;Haskell way.&rdquo;
+The first part of Day 1&rsquo;s problem asks you to find the two numbers in a long list of random numbers that add up to 2020.
+In a familiar imperative language I might say something like,
+&ldquo;for each number in the list, add it to each other number in the list.
+If that sum is 2020, stop and give me those two numbers.&rdquo;
+In Ruby that might look like:</p><pre><code># expenses = [1753, 1976, 1574, 308, 1384, 1191, 1731, 1829 ...]
+combo = []
+expenses.each do |expense|
+  other_expenses = expenses - [expense]
+  other_expenses.each do |other|
+    if expense + other == 2020
+      combo = [expense, other]
+    end
+  end
+end 
+</code></pre><p>(Of course if you were to do that you should just use Ruby&rsquo;s <a href=https://docs.ruby-lang.org/en/3.0.0/Array.html#method-i-combination><code>Array#combination</code></a> method, but I&rsquo;m illustrating the imperative approach to this problem.)</p><p>Using a <a href=http://learnyouahaskell.com/starting-out#im-a-list-comprehension>list comprehension</a> like I did in my solution is a <em>declarative</em> way to solve the same problem.
+Instead of saying what to do, I&rsquo;m saying what I want:</p><pre><code>[(x, y) |
+</code></pre><p><em>Give me all pairs <code>x</code>, <code>y</code> where&mldr;</em></p><pre><code>(x:ys) &lt;- tails (nub xs), y &lt;- ys
+</code></pre><p><em><code>x</code> is any distinct number in the list and <code>y</code> is any other distinct number in the list</em></p><pre><code>, y + x == n
+</code></pre><p><em>and <code>x + y = 2020</code>.</em></p><p>It took me a long time to figure out what was going on in my list comprehension, and it&rsquo;s going to take me a while to be able to read and write them with reasonable efficiency.
+I had to work my way backwards from a more generalized solution I <a href="https://wiki.haskell.org/index.php?title=99_questions/Solutions/26&oldid=57435">found on the Haskell wiki</a>.</p><p>I&rsquo;m sure my code could be a lot more readable and a lot more idiomatic.
+But it feels pretty exciting to express a solution in a radically different way than I&rsquo;m used to, and I can&rsquo;t wait to see what other ways of thinking and writing about problems Haskell will lead me to.</p><section class=footnotes role=doc-endnotes><hr><ol><li id=fn:1 role=doc-endnote><p>I like <a href=http://learnyouahaskell.com/chapters>Learn You A Haskell</a> but I use it more like a reference book.
+Despite the quirky/energetic narration, it&rsquo;s way too slow for me to read it from start to finish.
+But when I encounter a new term and need a thorough, plain English explanation of it with examples, I go right to the table of contents for LYAH.
+The other book I like is <a href=https://haskellbook.com>Haskell Programming From First Principles</a>, which is actually slower, but does a great job explaining the conceptual underpinnings of the language&rsquo;s design, which is important for the way I learn. <a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></section></article><nav class=sidebar><h3>Tags</h3><ul><li><a href=/tags/haskell/>haskell</a></li><li><a href=/tags/aoc2020/>AOC2020</a></li></ul><hr><h3>Adjacent</h3><div><a href=/2020/12/activerecord-has_many-association-within-the-same-model/>← ActiveRecord has_many Association Within the Same Model</a><br>- - -<br><a href=/2021/02/aoc-2020-day-4-pt1/>AoC 2020 Day 4 Pt1 →</a></div></nav></div><footer style=max-width:100%><a href=/><img style=max-width:100% src=/glasses.svg></a></footer></div></body></html>

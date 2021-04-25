@@ -5,8 +5,3 @@ logs
 # mac
 .DS_Store
 
-# build directory
-public
-
-# resources directory
-resources

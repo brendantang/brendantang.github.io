@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ruby on brendan tang</title><link>https://brendantang.net/tags/ruby/</link><description>Recent content in ruby on brendan tang</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://brendantang.net/tags/ruby/index.xml" rel="self" type="application/rss+xml"/><item><title>Ruby basics</title><link>https://brendantang.net/notebook/ruby-basics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://brendantang.net/notebook/ruby-basics/</guid><description>These notes are pretty old and not well organized!
+because ruby’s integers are objects they have methods
+a block in Ruby is a parameter passed into a method call
+an array is an ordered collection of elements indexed starting at 0. square brackets, commas
+a hash is an unordered collection of key/value pairs. curly braces, pairs joined by rockets (=&amp;gt;), and comma separated
+logical and is &amp;amp;&amp;amp; logical or is ||</description></item></channel></rss>

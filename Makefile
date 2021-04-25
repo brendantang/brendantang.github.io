@@ -11,7 +11,6 @@ browser:
 	open 'http://localhost:1313/'
 
 push:
-	touch './public/.static'
-	tar c ./public $* | dokku tar:in brendantang
+	git push
 
 deploy: build push
