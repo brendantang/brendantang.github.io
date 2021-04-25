@@ -1,26 +1,12 @@
 {{define "main"}}
 
+<h2>{{.Title}} {{ .Params.icon}}</h2>
+
 <section>{{- .Content -}}</section>
 
-<h2>{{.Title}} {{ .Params.icon}}</h2>
-{{ $is_section := .IsSection }}
 <ul class="posts-list">
   {{range .Paginator.Pages}}
-  <li class="post-listing">
-    <a href="{{.RelPermalink}}">{{.Title}}</a>
-    <div> 
-      <time>
-        {{ .Date.Format "2006-01-02"}} 
-      </time>
-      {{ if not $is_section }}
-        {{with .Site.GetPage .Section}}
-          <a href={{.Page.RelPermalink}} title={{.Page.Title}}>
-            {{.Page.Params.icon}}
-          </a>
-        {{end}}
-      {{end}}
-    </div>
-  </li>
+    {{ partial "page-listing" . }}
   {{end}}
 </ul>
 

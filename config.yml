@@ -5,3 +5,4 @@ paginate: 20
 
 permalinks:
   posts: /:year/:month/:title/
+  notebook: /:section/:slug/

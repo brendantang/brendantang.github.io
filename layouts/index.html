@@ -1,0 +1,30 @@
+{{ define "main" }}
+
+<h2>{{ .Title }}</h2>
+
+{{ .Content }}
+
+<ul>
+  {{ range .Site.Sections }}
+  <li>
+    <a href="{{ .Page.RelPermalink }}"><b>{{ .Page.Params.icon }} {{ .Page.Title }} </b></a> -
+    {{ .Page.Summary }}
+  </li>
+  {{end}}
+</ul>
+
+<h3>Last modified</h3>
+
+<ul class="posts-list">
+  {{range sort .Site.RegularPages "Lastmod" "desc"}}
+    <li class="post-listing">
+      <a href="{{.RelPermalink}}">{{.Title}}</a>
+      <time> last edit {{ .Lastmod }} </time>
+      {{ with .GetPage .Section }}
+        <a class="no-underline" href={{.Page.RelPermalink}}>{{.Page.Params.icon}}</a>
+      {{ end }}
+    </li>
+  {{end}}
+</ul>
+
+{{end}}

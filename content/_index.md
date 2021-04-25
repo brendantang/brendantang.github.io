@@ -1,4 +1,5 @@
 ---
+title: brendan tang
+icon: 🐒
 ---
 
-Mostly boring notes on programming that I might otherwise forget

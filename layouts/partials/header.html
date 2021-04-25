@@ -1,7 +1,8 @@
 <header class="site-header">
-  <a href="{{ "" | relLangURL}}">{{site.Title}}</a>
-  <nav class="site-navigation">
+  {{ partial "breadcrumb.html" . }}
+  <ul class="site-navigation">
     <li><a title="tags" href="/tags">🏷</a></li>
+    <li><a title="notebook" href="/notebook">📓</a></li>
     <li><a title="my github" href="https://github.com/brendantang">💻</a></li>
-  </nav>
+  </ul>
 </header>
