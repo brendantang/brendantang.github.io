@@ -11,8 +11,7 @@ browser:
 	open 'http://localhost:1313/'
 
 push:
-	git add public 
-	git commit -m "Commit from `make push`" 
-	git push
+	touch './public/.static'
+	tar c ./public $* | dokku tar:in brendantang
 
 deploy: build push
