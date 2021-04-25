@@ -18,11 +18,11 @@
 <ul class="posts-list">
   {{range sort .Site.RegularPages "Lastmod" "desc"}}
     <li class="post-listing">
-      <a href="{{.RelPermalink}}">{{.Title}}</a>
-      <time> last edit {{ .Lastmod }} </time>
       {{ with .GetPage .Section }}
         <a class="no-underline" href={{.Page.RelPermalink}}>{{.Page.Params.icon}}</a>
       {{ end }}
+      <a href="{{.RelPermalink}}">{{.Title}}</a>
+      {{ partial "lastmod.html" . }}
     </li>
   {{end}}
 </ul>

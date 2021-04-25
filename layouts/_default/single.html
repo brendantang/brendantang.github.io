@@ -4,7 +4,7 @@
     <h1>{{ .Title }}</h1>
     <aside>
       {{ if .Date }}
-        <time>published {{ .Date.Format "Monday, Jan 2, 2006" }}</time><br/>
+        <time>created {{ .Date.Format "Monday, Jan 2, 2006" }}</time><br/>
       {{ end }} 
       {{ partial "lastmod.html" . }}
     </aside>
