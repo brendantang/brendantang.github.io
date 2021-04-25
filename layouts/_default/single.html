@@ -1,9 +1,12 @@
-{{define "main"}}
+{{ define "main" }}
 <div id="content">
   <article>
-    <h1>{{.Title}}</h1>
+    <h1>{{ .Title }}</h1>
     <aside>
-      <time>{{.Date}}</time><br />
+      {{ if .Date }}
+        <time>published {{ .Date.Format "Monday, Jan 2, 2006" }}</time><br/>
+      {{ end }} 
+      {{ partial "lastmod.html" . }}
     </aside>
     {{.Content}}
   </article>
