@@ -1,5 +1,6 @@
 ---
 title: Dotfile management with rcm
+date: 2021-04-28
 tags: [dotfiles, unix]
 ---
 
