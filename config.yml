@@ -3,6 +3,8 @@ languageCode: "en-us"
 title: "brendan tang"
 paginate: 20
 enableGitInfo: true
+ignoreErrors: 
+  - error-remote-getjson
 
 permalinks:
   posts: /:year/:month/:title/
