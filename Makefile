@@ -5,7 +5,7 @@ dev:
 	make -j 2 server browser
 
 server:
-	hugo server --bind=0.0.0.0 --baseURL=http://0.0.0.0:1313 --config config.yml --disableFastRender --enableGitInfo -D -F -v
+	hugo server --config config.yml --disableFastRender --enableGitInfo -D -F -v
 
 browser: 
 	open 'http://localhost:1313/'

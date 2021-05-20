@@ -1,0 +1,4 @@
+---
+title: Haskell
+icon: 🍛
+---
