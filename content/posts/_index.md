@@ -1,6 +1,6 @@
 ---
-title: Tooling
-icon: 🔧
+title: posts
+icon: 🤔 
+sortOrder: 0
 ---
 
-Notes on command line usage, git, unix tools, config, dev environment, etc.

@@ -8,4 +8,8 @@ ignoreErrors:
 
 permalinks:
   posts: /:year/:month/:title/
-  notebook: /:section/:slug/
+  notes: /:year/:month/:title/
+
+params:
+  mainSections:
+    - posts

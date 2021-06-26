@@ -1,4 +1,4 @@
-<li class="post-listing">
+<li class="post-listing {{ if .Params.draft }} draft-listing {{ end }}">
   <a href="{{.RelPermalink}}">{{.Title}}</a>
   {{ partial "tag-icons.html" . }}
   {{ partial "lastmod.html" . }}

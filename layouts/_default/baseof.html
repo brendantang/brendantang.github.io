@@ -3,7 +3,8 @@
 {{- partial "head.html" . -}}
 <body>
   <div class="wrapper">
-  {{- partial "header.html" . -}} 
+    
+  {{ if not .IsHome }} {{- partial "header.html" . -}} {{ end }}
   {{- block "main" . }}{{- end }}
   {{- partial "footer.html" . -}} 
   </div>

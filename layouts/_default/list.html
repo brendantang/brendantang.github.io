@@ -1,14 +1,14 @@
 {{define "main"}}
 
-<h2>{{.Title}} {{ .Params.icon}}</h2>
+<h1>
+  <a href="{{ .RelPermalink }}">
+    {{.Title}} {{ .Params.icon}}
+  </a>
+</h1>
 
 <section>{{- .Content -}}</section>
 
-<ul class="posts-list">
-  {{range .Paginator.Pages}}
-    {{ partial "page-listing" . }}
-  {{end}}
-</ul>
+{{ partial "listings.html" .Paginator.Pages }}
 
 {{template "_internal/pagination.html" .}}
 

@@ -72,12 +72,13 @@ article {
   padding: 0.25rem;
 }
 
-.term-table {
-}
-
 .term-row td {
   padding: 0.25rem;
 }
 .no-underline {
   text-decoration: none;
+}
+
+.draft-listing {
+  opacity: 50%;
 }
