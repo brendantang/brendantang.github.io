@@ -1,6 +1,6 @@
 ---
-title: posts
-icon: 🤔
+title: Tooling
+icon: 🔧
 ---
 
-writing to think through ideas
+Notes on command line usage, git, unix tools, config, dev environment, etc.

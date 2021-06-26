@@ -1,6 +1,6 @@
 ---
 title: Make git forget about files
-tags: [git]
+tags: [git, tooling]
 ---
 
 I am always forgetting how to do this:

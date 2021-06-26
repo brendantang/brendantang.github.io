@@ -1,7 +1,7 @@
 ---
 title: Dotfile management with rcm
 date: 2021-04-28
-tags: [dotfiles, unix]
+tags: [dotfiles, unix, tooling]
 ---
 
 [rcm](https://github.com/thoughtbot/rcm) is a really nice little program that puts your dotfiles in one directory and lets you track them with git.[^my_dotfiles]

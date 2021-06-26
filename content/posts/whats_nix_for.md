@@ -2,7 +2,7 @@
 title: "What's Nix For?"
 date: 2021-01-03T15:08:28-05:00
 draft: true
-tags: nix
+tags: [nix]
 ---
 
 

@@ -1,0 +1,6 @@
+{{/* for each tag with an emoji defined in data/icons.yml, render that emoji as a link to the tag */}}
+{{ range .GetTerms "tags" }}
+  <a href="{{.RelPermalink}}">
+    {{ index $.Site.Data.icons .LinkTitle }}
+  </a>
+{{ end }}

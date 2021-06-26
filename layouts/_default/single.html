@@ -16,7 +16,10 @@
       <h3>Tags</h3>
       <ul>
         {{range (.GetTerms "tags")}}
-        <li> {{ .Params.icon }} <a href="{{.RelPermalink}}">{{.LinkTitle}}</a></li>
+          <li>
+            <a href="{{.RelPermalink}}">{{.LinkTitle}}</a>
+            {{ index $.Site.Data.icons .LinkTitle }}
+          </li>
         {{end}}
       </ul>
     {{ end }}

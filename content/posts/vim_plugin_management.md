@@ -1,7 +1,7 @@
 ---
 title: vim plugin management with git submodules
 date: 2021-04-28
-tags: [vim, unix, git]
+tags: [vim, unix, git, tooling]
 ---
 
 There are a few plugin managers for vim where you just list your plugins in your `.vimrc`.
