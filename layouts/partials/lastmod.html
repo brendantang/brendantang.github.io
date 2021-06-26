@@ -1,8 +1,6 @@
 {{ with .GitInfo }}
-<code>
-  last commit 
-  <a href="https://github.com/brendantang/brendantang.net/commit/{{ .Hash }}">{{ .AbbreviatedHash }}</a>
-  <time> {{ .AuthorDate.Format "Jan 2, 2006" }} </time>
-  {{ .Subject }}
-</code>
+<code title="last commit" class="dim">
+  [<a href="https://github.com/brendantang/brendantang.net/commit/{{ .Hash }}">{{ .AbbreviatedHash }}</a> -
+  <time> {{ .AuthorDate.Format "Jan 2, 2006" }} </time> 
+  {{ .Subject }}] </code>
 {{ end }}

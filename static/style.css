@@ -6,6 +6,12 @@ body {
   flex-flow: column;
   align-items: center;
 }
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 p,
 ul,
 li,
@@ -68,7 +74,6 @@ article {
 }
 .site-navigation a,
 .site-navigation li a {
-  text-decoration: none;
   padding: 0.25rem;
 }
 
@@ -79,6 +84,6 @@ article {
   text-decoration: none;
 }
 
-.draft-listing {
+.dim {
   opacity: 50%;
 }
