@@ -3,4 +3,5 @@ title: brendan tang
 icon: 🐒
 ---
 
-[notes](/notes)
+[github](https://github.com/brendantang)
+[twitter](https://twitter.com/keyboardliker)

@@ -2,12 +2,16 @@
 <div id="content">
   <article>
     <h1>{{ .Title }}</h1>
+    {{ if eq .Type "notes" }}
+      {{ partial "notes-warning.html" . }}
+    {{ end }}
     <aside>
       {{ if .Date }}
         <time>created {{ .Date.Format "Monday, Jan 2, 2006" }}</time><br/>
       {{ end }} 
       {{ partial "lastmod.html" . }}
     </aside>
+
     {{.Content}}
   </article>
 
